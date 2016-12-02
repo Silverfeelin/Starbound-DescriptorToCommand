@@ -16,7 +16,7 @@ function showCommand() {
 function exportCommand() {
     var res = generateCommand();
     var blob = new Blob([ cmd ], {type: "text/plain;charset=utf8"});
-    saveAs(blob, "TextParticles.json");
+    saveAs(blob, "SpawnItemCommand.json");
 }
 
 function generateCommand () {
