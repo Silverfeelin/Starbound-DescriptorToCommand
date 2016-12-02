@@ -1,2 +1,1 @@
-# Starbound-DescriptorToCommand
-Turns Item Descriptors into `/spawnitem` commands.
+https://silverfeelin.github.io/Starbound-DescriptorToCommand/
