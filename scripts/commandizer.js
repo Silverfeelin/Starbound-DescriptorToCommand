@@ -7,8 +7,10 @@ $(function(){
 
 function showCommand() {
     var res = generateCommand();
-    var domOutput = $("#output").get(0);
-    domOutput.value = res;
+    if (typeof res === "string") {
+      var domOutput = $("#output").get(0);
+      domOutput.value = res;  
+    }
 }
 
 function exportCommand() {
