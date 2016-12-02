@@ -15,7 +15,7 @@ function showCommand() {
 
 function exportCommand() {
     var res = generateCommand();
-    var blob = new Blob([ cmd ], {type: "text/plain;charset=utf8"});
+    var blob = new Blob([ res ], {type: "text/plain;charset=utf8"});
     saveAs(blob, "SpawnItemCommand.json");
 }
 
@@ -45,7 +45,11 @@ function generateCommand () {
     descriptor.parameters = escapeObject(descriptor.parameters);
   }
   
-  var cmd = "/spawnitem " + descriptor.name + " " + descriptor.count + " '" + JSON.stringify(descriptor.parameters).replace(/'/g, "\\'") + "'";
+  var cmd = "/spawnitem " + descriptor.name + " " + descriptor.count;
+  if (descriptor.hasOwnProperty("parameters"))
+  {
+    cmd += " '" + JSON.stringify(descriptor.parameters).replace(/'/g, "\\'") + "'";
+  }
   
   return cmd;
 }
