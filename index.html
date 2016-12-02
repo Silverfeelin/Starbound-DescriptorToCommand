@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<!-- Template by Quackit.com -->
+<html lang="en">
+   <head>
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+      <meta http-equiv="CACHE-CONTROL" content="NO-CACHE">
+      <link rel="image_src" href="imgs/hat.png">
+      <link rel="shortcut icon" type="image/ico" href="favicon.ico">
+      <meta property="og:image" content="imgs/hat.png" />
+      <meta property="og:image:type" content="image/png" />
+      <!-- jQuery -->
+      <script src="scripts/jquery-1.11.3.min.js"></script>
+      <!-- Custom script -->
+      <script src="scripts/script.js"></script>
+      <script src="scripts/FileSaver.min.js"></script>
+      <script src="scripts/commandizer.js"></script>
+      <title>Descriptor to Command</title>
+   </head>
+   <body>
+      <!-- Content wrapper (mainly to set a different footer color) -->
+      <div id="wrapper">
+         <!-- Navigation -->
+         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <div class="container">
+               <!-- Logo and responsive toggle -->
+               <div class="navbar-header">
+                  <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="https://github.com/Silverfeelin">
+                  <i class="fa fa-github"></i>
+                  <span>Silverfeelin</span>
+                  </a>
+               </div>
+               <!-- Navbar links -->
+               <div class="collapse navbar-collapse" id="navbar">
+                  <ul class="nav navbar-nav">
+                     <!-- li class="active" -->
+                     <li>
+                        <a href="https://github.com/Silverfeelin/Starbound-DescriptorToCommand">View project on GitHub</a>
+                     </li>
+                  </ul>
+               </div>
+            </div>
+         </nav>
+         <!-- Jumbotron -->
+         <div id="featureBackground">
+            <div id="feature" class="jumbotron feature">
+               <div class="container">
+                  <h1>
+                     Starbound Descriptor to Command
+                  </h1>
+                  <p>Generates /spawnitem commands for item descriptors!</p>
+               </div>
+            </div>
+         </div>
+         <!-- Content -->
+         <div class="container">        
+        <div class="row">
+          <h3 class="content-header">Item Descriptor</h3>
+          <textarea id="text" class="textInput form-control"  placeholder="{ &quot;name&quot; : &quot;flashlight&quot;, &quot;count&quot; : 1, &quot;parameters&quot; : {} }"></textarea>
+        </div>
+        <div class="row">
+          <h3 class="content-header">Output</h3>
+            <div class="form-group">
+              <form>
+                <input id="output" class="form-control">
+              </form>
+              <br>
+              <button id="btnExportCommand" class="btn btn-success">Generate Command File</button>
+              <button id="btnTextCommand" class="btn btn-info">Generate Text Command</button>
+              <button class="btn btn-info btnCopy" data-clipboard-action="copy" data-clipboard-target="#output">Copy to Clipboard</button><br>Copying to clipboard may not work on all browsers. You might have to use Ctrl+C or Command-C instead.
+            </div>
+        </div>
+      </div>
+      </div>
+      <!-- Footer -->
+      <footer>
+         <div class="col-lg-12 small-print">
+            <div class="container">
+               <p><a href="http://playstarbound.com/">Official Starbound site</a></p>
+               <hr>
+               <div>
+                  <p style="float:left;"><a href="https://github.com/Silverfeelin/Starbound-Hatter/blob/master/credits.md">Credits and Licenses</a></p>
+                  <p style="float:right;">Contact me: <a href="mailto:silverfeelin@gmail.com">Silverfeelin@gmail.com</a></p>
+               </div>
+            </div>
+         </div>
+      </footer>
+      <!-- Bootstrap Core CSS -->
+      <link href="css/bootstrap.css" rel="stylesheet">
+      <!-- Font Awesome CSS -->
+      <link href="css/font-awesome.css" rel="stylesheet">
+      <!-- Bootstrap Core JavaScript -->
+      <script src="scripts/clipboard.js"></script>
+      <!-- Clipboard.js Javascript -->
+      <script src="scripts/bootstrap.min.js"></script>
+      <!-- Custom CSS: You can use this stylesheet to override any Bootstrap styles and/or apply your own styles -->
+      <link href="css/custom.css?v=1.1" rel="stylesheet">
+   </body>
+</html>
