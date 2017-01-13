@@ -1,35 +1,63 @@
 $(function(){
-    clipboard = new Clipboard(".btnCopy");
-    
-     $("#btnTextCommand").click(showCommand);
-     $("#btnExportCommand").click(exportCommand);
+  clipboard = new Clipboard(".btnCopy");
+
+  // Bind input button
+  $("#inputFile").hide();
+  $("#btnSelectFile").click(function() {
+    $("#inputFile").trigger('click');
+  });
+  $("#inputFile").change(function(){
+     var file = this.files[0];
+     readFile(file);
+   });
+  
+  // Bind output buttons
+  $("#btnTextCommand").click(showCommand);
+  $("#btnExportCommand").click(exportCommand);
 })
 
+function readFile(file) {
+  var reader = new FileReader();
+  reader.onload = fileLoaded;
+  reader.onerror = fileErrored;
+  reader.readAsText(file);
+}
+
+function fileLoaded(e) {
+  exportCommand(e.target.result);
+}
+
+function fileErrored(e) {
+  $("#output").get(0).value = e.target.error;
+}
+
 function showCommand() {
-    var res = generateCommand();
-    if (typeof res === "string") {
-      var domOutput = $("#output").get(0);
-      domOutput.value = res;  
-    }
-}
-
-function exportCommand() {
-    var res = generateCommand();
-    var blob = new Blob([ res ], {type: "text/plain;charset=utf8"});
-    saveAs(blob, "SpawnItemCommand.json");
-}
-
-function generateCommand () {
-  var input = $("#text").get(0).value;
-  var descriptor;
-  
-  // Check input syntax
   try {
-    descriptor = JSON.parse(input);
+    var res = generateCommand();
+    var domOutput = $("#output").get(0);
+    domOutput.value = res;  
   } catch(e) {
     $("#output").get(0).value = e;
-    return;
   }
+}
+
+function exportCommand(input) {
+  try {
+    var res = generateCommand(input);
+    var blob = new Blob([ res ], {type: "text/plain;charset=utf8"});
+    saveAs(blob, "SpawnItemCommand.json");
+  } catch(e) {
+    $("#output").get(0).value = e;
+  }
+}
+
+function generateCommand(input) {
+  if (typeof(input) !== "string") {
+    input = $("#text").get(0).value;
+  }
+  var descriptor;
+  
+  descriptor = JSON.parse(input);
   
   // Check input
   if (!descriptor.hasOwnProperty("name") || typeof descriptor.name !== "string")
